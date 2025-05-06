@@ -1,4 +1,6 @@
-#!/home/panda/Downloads/pyOS_Manager/myenv/bin/python3
+#!/bin/sh
+'''exec' "/home/panda/Documents/8th semester/OsControl-Planel/myenv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

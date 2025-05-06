@@ -14,75 +14,82 @@ class NetworkFrame(tk.Frame):
         tab_control.pack(fill="both", expand=True)
 
         # WiFi Settings Tab
-        self.wifi_frame = tk.Frame(tab_control)
+        self.wifi_frame = tk.Frame(tab_control, bg="#E1F5FE")  # Light SkyBlue background
         tab_control.add(self.wifi_frame, text="WiFi")
         self.create_wifi_widgets()
 
         # Ethernet Settings Tab
-        self.ethernet_frame = tk.Frame(tab_control)
+        self.ethernet_frame = tk.Frame(tab_control, bg="#C8E6C9")  # Light Pastel Green
         tab_control.add(self.ethernet_frame, text="Ethernet")
         self.create_ethernet_widgets()
 
         # Dial-Up Settings Tab
-        self.dialup_frame = tk.Frame(tab_control)
+        self.dialup_frame = tk.Frame(tab_control, bg="#E8EAF6")  # Light Blue background
         tab_control.add(self.dialup_frame, text="Dial-Up")
         self.create_dialup_widgets()
 
     def create_wifi_widgets(self):
+        # Style for WiFi Section
+        label_style = {'font': ("Arial", 12), 'bg': "#E1F5FE", 'fg': "#01579B"}  # Blue text, SkyBlue background
+        button_style = {'font': ("Arial", 12, "bold"), 'bg': "#388E3C", 'fg': "white", 'relief': "solid"}
+
         # WiFi Widgets
-        ssid_label = tk.Label(self.wifi_frame, text="SSID:")
+        ssid_label = tk.Label(self.wifi_frame, text="SSID:", **label_style)
         ssid_label.pack(pady=5)
-        self.ssid_entry = tk.Entry(self.wifi_frame)
+        self.ssid_entry = tk.Entry(self.wifi_frame, font=("Arial", 12))
         self.ssid_entry.pack(pady=5)
 
-        password_label = tk.Label(self.wifi_frame, text="Password:")
+        password_label = tk.Label(self.wifi_frame, text="Password:", **label_style)
         password_label.pack(pady=5)
-        self.password_entry = tk.Entry(self.wifi_frame, show="*")
+        self.password_entry = tk.Entry(self.wifi_frame, show="*", font=("Arial", 12))
         self.password_entry.pack(pady=5)
 
-        connect_button = tk.Button(self.wifi_frame, text="Connect WiFi", command=self.connect_wifi)
-        connect_button.pack(pady=5)
+        connect_button = tk.Button(self.wifi_frame, text="Connect WiFi", command=self.connect_wifi, **button_style)
+        connect_button.pack(pady=10)
 
-        disconnect_button = tk.Button(self.wifi_frame, text="Disconnect WiFi", command=self.disconnect_wifi)
-        disconnect_button.pack(pady=5)
+        disconnect_button = tk.Button(self.wifi_frame, text="Disconnect WiFi", command=self.disconnect_wifi, **button_style)
+        disconnect_button.pack(pady=10)
 
     def create_ethernet_widgets(self):
+        # Style for Ethernet Section
+        label_style = {'font': ("Arial", 12), 'bg': "#C8E6C9", 'fg': "#2E7D32"}  # Green text, Pastel Green background
+        button_style = {'font': ("Arial", 12, "bold"), 'bg': "#388E3C", 'fg': "white", 'relief': "solid"}
+
         # Ethernet Widgets
-        ethernet_status_label = tk.Label(self.ethernet_frame, text="Ethernet Connection Status:")
+        ethernet_status_label = tk.Label(self.ethernet_frame, text="Ethernet Connection Status:", **label_style)
         ethernet_status_label.pack(pady=5)
 
-        self.ethernet_status = tk.Label(self.ethernet_frame, text="Checking...")
+        self.ethernet_status = tk.Label(self.ethernet_frame, text="Checking...", font=("Arial", 12), bg="#C8E6C9", fg="#388E3C")
         self.ethernet_status.pack(pady=5)
         self.update_ethernet_status()
 
-        enable_button = tk.Button(self.ethernet_frame, text="Enable Ethernet", command=self.enable_ethernet)
+        enable_button = tk.Button(self.ethernet_frame, text="Enable Ethernet", command=self.enable_ethernet, **button_style)
         enable_button.pack(pady=5)
 
-        disable_button = tk.Button(self.ethernet_frame, text="Disable Ethernet", command=self.disable_ethernet)
+        disable_button = tk.Button(self.ethernet_frame, text="Disable Ethernet", command=self.disable_ethernet, **button_style)
         disable_button.pack(pady=5)
 
     def create_dialup_widgets(self):
-        # Dial-Up Widgets
-        phone_label = tk.Label(self.dialup_frame, text="Phone Number:")
-        phone_label.pack(pady=5)
-        self.phone_entry = tk.Entry(self.dialup_frame)
-        self.phone_entry.pack(pady=5)
+        # Style for Dial-Up Section
+        label_style = {'font': ("Arial", 12), 'bg': "#E8EAF6", 'fg': "#1A237E"}  # Dark Blue text, Light Blue background
+        button_style = {'font': ("Arial", 12, "bold"), 'bg': "#388E3C", 'fg': "white", 'relief': "solid"}
 
-        username_label = tk.Label(self.dialup_frame, text="Username:")
+        # Dial-Up Widgets
+        username_label = tk.Label(self.dialup_frame, text="Username:", **label_style)
         username_label.pack(pady=5)
-        self.username_entry = tk.Entry(self.dialup_frame)
+        self.username_entry = tk.Entry(self.dialup_frame, font=("Arial", 12))
         self.username_entry.pack(pady=5)
 
-        password_label = tk.Label(self.dialup_frame, text="Password:")
+        password_label = tk.Label(self.dialup_frame, text="Password:", **label_style)
         password_label.pack(pady=5)
-        self.dialup_password_entry = tk.Entry(self.dialup_frame, show="*")
+        self.dialup_password_entry = tk.Entry(self.dialup_frame, show="*", font=("Arial", 12))
         self.dialup_password_entry.pack(pady=5)
 
-        connect_button = tk.Button(self.dialup_frame, text="Connect Dial-Up", command=self.connect_dialup)
-        connect_button.pack(pady=5)
+        connect_button = tk.Button(self.dialup_frame, text="Connect Dial-Up", command=self.connect_dialup, **button_style)
+        connect_button.pack(pady=10)
 
-        disconnect_button = tk.Button(self.dialup_frame, text="Disconnect Dial-Up", command=self.disconnect_dialup)
-        disconnect_button.pack(pady=5)
+        disconnect_button = tk.Button(self.dialup_frame, text="Disconnect Dial-Up", command=self.disconnect_dialup, **button_style)
+        disconnect_button.pack(pady=10)
 
     # WiFi Methods
     def connect_wifi(self):

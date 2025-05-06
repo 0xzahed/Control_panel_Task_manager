@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/panda/Downloads/pyOS_Manager/myenv
+set -gx VIRTUAL_ENV '/home/panda/Documents/8th semester/OsControl-Planel/myenv'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
